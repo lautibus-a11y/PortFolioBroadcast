@@ -35,28 +35,28 @@ const VisualFrame = ({ isMobile }: { isMobile?: boolean }) => (
 );
 
 export default function Hero() {
-  const [text, setText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  
   const words = ["Diseño", "Desarrollo", "Código"];
-
+  const [index, setIndex] = useState(0);
+  const [isHighlighted, setIsHighlighted] = useState(false);
+  
   useEffect(() => {
-    const currentWord = words[wordIndex % words.length];
+    const interval = setInterval(() => {
+      // Start highlight
+      setIsHighlighted(true);
+      
+      // Wait for highlight to cover text, then change word
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % words.length);
+        // Remove highlight
+        setTimeout(() => {
+          setIsHighlighted(false);
+        }, 300);
+      }, 600);
+      
+    }, 4000); // Total cycle time
     
-    let timer: NodeJS.Timeout;
-    if (!isDeleting && text === currentWord) {
-      timer = setTimeout(() => setIsDeleting(true), 2000);
-    } else if (isDeleting && text === "") {
-      setIsDeleting(false);
-      setWordIndex((prev) => prev + 1);
-    } else {
-      timer = setTimeout(() => {
-        setText(currentWord.substring(0, text.length + (isDeleting ? -1 : 1)));
-      }, isDeleting ? 60 : 100);
-    }
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, wordIndex]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-[100svh] pt-32 pb-20 px-6 md:px-12 overflow-hidden flex items-center" 
@@ -84,9 +84,30 @@ export default function Hero() {
 
           <ScrollReveal direction="up" delay={0.2} distance={30} blur={true}>
             <h1 className="font-headline text-4xl sm:text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter mb-8 uppercase italic flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-1">
-              <span className="inline-flex items-center text-primary justify-center lg:justify-start -mb-2 sm:mb-0">
-                {text}
-                <span className="animate-[pulse_0.8s_ease-in-out_infinite] ml-1 opacity-80 font-light translate-y-[-2px]">|</span>
+              <span className="relative inline-block overflow-hidden py-1 px-2 -mx-2">
+                <motion.span
+                  animate={{ 
+                    color: isHighlighted ? "#000000" : "#a0ffc3" 
+                  }}
+                  transition={{ duration: 0.2 }}
+                  className="relative z-10"
+                >
+                  {words[index]}
+                </motion.span>
+                
+                {/* Selection Highlight Box */}
+                <motion.span
+                  initial={{ left: "-105%" }}
+                  animate={{ 
+                    left: isHighlighted ? "0%" : "105%"
+                  }}
+                  transition={{ 
+                    duration: 0.5, 
+                    ease: [0.65, 0, 0.35, 1] 
+                  }}
+                  className="absolute inset-0 bg-white z-0"
+                  style={{ width: "100%" }}
+                />
               </span>
               <span>y</span>
               <span className="font-light text-white/20 w-full text-center lg:text-left">Arquitectura Digital</span>
