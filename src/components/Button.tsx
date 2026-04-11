@@ -28,12 +28,12 @@ export default function Button({
         group flex items-center p-1 rounded-2xl transition-all duration-300
         ${isPrimary 
           ? "bg-primary text-black hover:shadow-[0_0_30px_rgba(160,255,195,0.4)]" 
-          : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
+          : "bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/30"
         }
         ${className}
       `}
     >
-      <span className="px-4 sm:px-6 py-2.5 sm:py-3 font-headline font-black uppercase tracking-widest text-[10px] sm:text-xs">
+      <span className="px-5 sm:px-7 py-3 sm:py-3.5 font-headline font-black uppercase tracking-widest text-sm sm:text-base">
         {children}
       </span>
       {Icon && (

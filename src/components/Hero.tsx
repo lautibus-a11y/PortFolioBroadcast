@@ -95,24 +95,30 @@ export default function Hero() {
 
           <ScrollReveal direction="up" delay={0.3} distance={30} blur={true}>
             <div className="relative max-w-lg mx-auto lg:mx-0 mt-4 mb-10 group">
+              {/* Opening quote - green border ring, white fill icon */}
               <motion.div 
                 animate={{ y: [-3, 3, -3], rotate: [-5, 5, -5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -left-4 sm:-left-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500 text-primary"
+                className="absolute -top-6 -left-4 sm:-left-8 transition-opacity duration-500"
               >
-                <Quote size={28} className="transform rotate-180" />
+                <div className="w-9 h-9 rounded-full border-2 border-primary flex items-center justify-center bg-primary/5 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                  <Quote size={16} className="text-white transform rotate-180" />
+                </div>
               </motion.div>
               
-              <p className="block text-center lg:text-left text-on-surface-variant text-base sm:text-lg font-body font-medium leading-[1.6] tracking-tight opacity-90 relative z-10 px-4 sm:px-0">
+              <p className="block text-center lg:text-left text-on-surface-variant text-base sm:text-lg font-body font-medium leading-[1.6] tracking-tight opacity-90 relative z-10 px-6 sm:px-0">
                 Transformo marcas emergentes en referentes de la industria a través de interfaces minimalistas y experiencias digitales diseñadas para generar impacto y resultados reales.
               </p>
               
+              {/* Closing quote - green border ring, white fill icon */}
               <motion.div 
                 animate={{ y: [3, -3, 3], rotate: [5, -5, 5] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-6 -right-4 sm:-right-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500 text-primary"
+                className="absolute -bottom-6 -right-4 sm:-right-8 transition-opacity duration-500"
               >
-                <Quote size={28} />
+                <div className="w-9 h-9 rounded-full border-2 border-primary flex items-center justify-center bg-primary/5 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                  <Quote size={16} className="text-white" />
+                </div>
               </motion.div>
             </div>
           </ScrollReveal>
@@ -120,10 +126,10 @@ export default function Hero() {
           <ScrollReveal direction="up" delay={0.4} distance={30} blur={true}>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-12 w-full">
               <a href="https://wa.me/5491172023171" target="_blank" rel="noopener noreferrer" className="w-full sm:w-fit">
-                <Button icon={Phone} variant="primary" className="w-full justify-center text-sm py-4">Agendá una llamada</Button>
+                <Button icon={Phone} variant="primary" className="w-full justify-center">Agendá una llamada</Button>
               </a>
               <a href="#proyectos" className="w-full sm:w-fit">
-                <Button icon={ArrowUpRight} variant="secondary" className="w-full justify-center text-sm py-4">Mirá mi laburo</Button>
+                <Button icon={ArrowUpRight} variant="secondary" className="w-full justify-center">Mirá mi laburo</Button>
               </a>
             </div>
           </ScrollReveal>
