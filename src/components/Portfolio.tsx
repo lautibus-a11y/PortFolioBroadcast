@@ -19,7 +19,7 @@ const mainProjects: Project[] = [
     title: "WEB + APP EDUCATIVA",
     year: "2024",
     category: "Full Stack Development",
-    image: "/assets/projects/Web + APP para institucion Educativa.png",
+    image: "/assets/projects/web-app-educativa.png",
     link: "https://web-sistema-de-gestion-educativo-ns.vercel.app/"
   },
   {
