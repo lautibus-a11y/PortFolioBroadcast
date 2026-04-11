@@ -35,15 +35,28 @@ const VisualFrame = ({ isMobile }: { isMobile?: boolean }) => (
 );
 
 export default function Hero() {
+  const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
-  const words = ["Diseño", "Desarrollo"];
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const words = ["Diseño", "Desarrollo", "Código"];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
-    return () => clearInterval(timer);
-  }, []);
+    const currentWord = words[wordIndex % words.length];
+    
+    let timer: NodeJS.Timeout;
+    if (!isDeleting && text === currentWord) {
+      timer = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && text === "") {
+      setIsDeleting(false);
+      setWordIndex((prev) => prev + 1);
+    } else {
+      timer = setTimeout(() => {
+        setText(currentWord.substring(0, text.length + (isDeleting ? -1 : 1)));
+      }, isDeleting ? 60 : 100);
+    }
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, wordIndex]);
 
   return (
     <section className="relative min-h-[100svh] pt-32 pb-20 px-6 md:px-12 overflow-hidden flex items-center" 
@@ -71,21 +84,9 @@ export default function Hero() {
 
           <ScrollReveal direction="up" delay={0.2} distance={30} blur={true}>
             <h1 className="font-headline text-4xl sm:text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter mb-8 uppercase italic flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-1">
-              <span className="inline-flex items-center whitespace-nowrap overflow-hidden h-[1.3em] relative text-primary justify-center lg:justify-start -mb-2 sm:mb-0 transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                <AnimatePresence mode="popLayout">
-                  <motion.span
-                    key={wordIndex}
-                    initial={{ y: 60, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -60, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute left-0"
-                  >
-                    {words[wordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-                {/* Invisible spacer bound to the CURRENT word creates responsive hugging width! */}
-                <span className="opacity-0 pointer-events-none">{words[wordIndex]}</span>
+              <span className="inline-flex items-center text-primary justify-center lg:justify-start -mb-2 sm:mb-0">
+                {text}
+                <span className="animate-[pulse_0.8s_ease-in-out_infinite] ml-1 opacity-80 font-light translate-y-[-2px]">|</span>
               </span>
               <span>y</span>
               <span className="font-light text-white/20 w-full text-center lg:text-left">Arquitectura Digital</span>
