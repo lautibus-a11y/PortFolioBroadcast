@@ -161,7 +161,7 @@
         }
 
         /* HERO WORD CYCLER */
-        #hero-word { transition: color 0.3s ease; }
+        #hero-word { transition: color 0.3s ease; display: inline-block; min-width: 5ch; text-align: left; }
         #word-highlight {
             position: absolute;
             inset: 0;
@@ -172,6 +172,28 @@
         }
         .highlighting #word-highlight { transform: translateX(0); }
         .highlighting #hero-word { color: black; }
+
+        /* PARTICLES */
+        #particles-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: blink-particle 4s infinite;
+        }
+        @keyframes blink-particle { 
+            0%, 100% { opacity: 0; transform: translateY(0); }
+            50% { opacity: 0.8; transform: translateY(-20px); }
+        }
 
         /* RIBBON */
         @keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -266,9 +288,10 @@
 
     <main class="relative z-10">
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden">
-            <div class="max-w-[1440px] mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <div class="text-center lg:text-left">
+        <section class="min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden relative">
+            <div id="particles-container"></div> <!-- Particles injected here -->
+            <div class="max-w-[1440px] mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+                <div class="text-left">
                     <div class="reveal inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/[0.02] mb-10 uppercase font-black text-[9px] tracking-[0.3em]">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75"></span>
@@ -277,13 +300,13 @@
                         Soluciones Digitales
                     </div>
                     
-                    <h1 class="reveal font-headline text-4xl sm:text-6xl md:text-8xl font-black uppercase italic leading-[1.0] tracking-tighter mb-10 flex flex-wrap justify-center lg:justify-start gap-x-4">
-                        <span class="relative overflow-hidden py-2 px-2 -mx-2">
+                    <h1 class="reveal font-headline text-[10vw] sm:text-6xl md:text-8xl font-black uppercase italic leading-[0.9] tracking-tighter mb-10 block">
+                        <span class="relative overflow-hidden py-2 inline-flex items-center">
                             <span id="hero-word" class="relative z-10 text-primary">Diseño</span>
                             <span id="word-highlight"></span>
                         </span>
-                        <span>y</span>
-                        <span class="text-white/20 w-full text-center lg:text-left">Arquitectura Digital</span>
+                        <span class="inline-block ml-2">y</span> <br class="hidden md:block">
+                        <span class="text-white/20">Arquitectura Digital</span>
                     </h1>
                     
                     <p class="reveal text-white/50 text-xl max-w-xl mx-auto lg:mx-0 mb-14 leading-relaxed font-medium relative px-8 lg:px-0">
@@ -648,6 +671,17 @@
 
         const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        // Particles Generator
+        const containerP = document.getElementById('particles-container');
+        for (let i = 0; i < 50; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 4 + 's';
+            containerP.appendChild(p);
+        }
+
         // Word Cycler Magic
         const words = ['Diseño', 'Desarrollo', 'Automatiza'];
         let wordIdx = 0;
