@@ -4,24 +4,120 @@ import SectionHeader from "./SectionHeader";
 import ScrollReveal from "./ScrollReveal";
 import Button from "./Button";
 
+const DesignIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(34,211,238,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.6)] transition-all duration-700">
+    <motion.path
+      d="M 20,50 C 20,20 80,20 80,50 C 80,80 20,80 20,50"
+      fill="none"
+      stroke="#22d3ee"
+      strokeWidth="3"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+    />
+    <motion.circle cx="50" cy="50" r="15" fill="none" stroke="#22d3ee" strokeWidth="3" initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.5, duration: 0.8, type: "spring" }} />
+    <motion.circle cx="50" cy="50" r="6" fill="#22d3ee" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 1, duration: 0.4 }} />
+  </motion.svg>
+);
+
+const DevIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(160,255,195,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(160,255,195,0.6)] transition-all duration-700">
+    <motion.path
+      d="M 35,30 L 15,50 L 35,70 M 65,30 L 85,50 L 65,70 M 55,20 L 45,80"
+      fill="none"
+      stroke="#a0ffc3"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+    />
+    <motion.circle cx="15" cy="50" r="4" fill="#a0ffc3" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 1, duration: 0.4 }} />
+    <motion.circle cx="85" cy="50" r="4" fill="#a0ffc3" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 1.2, duration: 0.4 }} />
+  </motion.svg>
+);
+
+const EcomIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(232,121,249,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(232,121,249,0.6)] transition-all duration-700">
+    <motion.path
+      d="M 20,35 L 80,35 L 70,80 L 30,80 Z"
+      fill="none"
+      stroke="#e879f9"
+      strokeWidth="4"
+      strokeLinejoin="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+    />
+    <motion.path
+      d="M 35,35 C 35,15 65,15 65,35"
+      fill="none"
+      stroke="#e879f9"
+      strokeWidth="4"
+      strokeLinecap="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
+    />
+    <motion.circle cx="50" cy="55" r="5" fill="#e879f9" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 1.2, duration: 0.4 }} />
+  </motion.svg>
+);
+
+const SeoIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(251,191,36,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(251,191,36,0.6)] transition-all duration-700">
+    <motion.path
+      d="M 20,80 L 40,60 L 60,70 L 90,30"
+      fill="none"
+      stroke="#fbbf24"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+    />
+    <motion.circle cx="90" cy="30" r="6" fill="#fbbf24" initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 1.2, duration: 0.4 }} />
+    <motion.path
+      d="M 75,30 L 90,30 L 90,45"
+      fill="none"
+      stroke="#fbbf24"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      transition={{ delay: 1, duration: 0.5 }}
+    />
+  </motion.svg>
+);
+
 const services = [
   {
-    icon: Layers,
+    CustomSvg: DesignIcon,
+    themeColor: "group-hover:text-[#22d3ee]",
+    bgHover: "bg-[#22d3ee]/10",
     title: "Diseño Web",
     description: "Interfaces cinematográficas enfocadas en la conversión que cuentan la historia de tu marca a través del movimiento y el espacio."
   },
   {
-    icon: Code2,
+    CustomSvg: DevIcon,
+    themeColor: "group-hover:text-[#a0ffc3]",
+    bgHover: "bg-[#a0ffc3]/10",
     title: "Desarrollo Web",
     description: "Rendimiento ultrarrápido usando stacks modernos como React, Next.js y arquitecturas robustas de WordPress."
   },
   {
-    icon: Store,
+    CustomSvg: EcomIcon,
+    themeColor: "group-hover:text-[#e879f9]",
+    bgHover: "bg-[#e879f9]/10",
     title: "E-commerce",
     description: "Tiendas digitales escalables que maximizan tu ticket promedio y ofrecen checkouts sin fricciones."
   },
   {
-    icon: Search,
+    CustomSvg: SeoIcon,
+    themeColor: "group-hover:text-[#fbbf24]",
+    bgHover: "bg-[#fbbf24]/10",
     title: "SEO",
     description: "Optimización basada en datos para asegurar que tu presencia digital domine los rankings de búsqueda."
   }
@@ -47,15 +143,18 @@ export default function Services() {
       <div className="flex flex-col border-t border-white/10 mb-24 md:mb-40">
         {services.map((service, i) => (
           <ScrollReveal key={service.title} delay={i * 0.1} direction="up" distance={20}>
-            <div className="group flex flex-col md:flex-row md:items-center py-10 md:py-16 border-b border-white/10 hover:bg-white/[0.01] transition-all duration-500 px-4 sm:px-8 gap-6 md:gap-12">
+            <div className="group flex flex-col md:flex-row md:items-center py-10 md:py-16 border-b border-white/10 hover:bg-white/[0.01] transition-all duration-500 px-4 sm:px-8 gap-6 md:gap-12 relative overflow-hidden">
+              {/* Highlight gradient on hover */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none blur-[100px] ${service.bgHover}`} />
+
               {/* Number */}
-              <div className="font-headline text-white/5 group-hover:text-primary/20 transition-colors duration-500 text-6xl md:text-8xl font-black italic tracking-tighter w-24 leading-none">
+              <div className={`font-headline text-white/5 ${service.themeColor} transition-colors duration-500 text-6xl md:text-8xl font-black italic tracking-tighter w-24 leading-none relative z-10`}>
                 0{i + 1}
               </div>
               
               {/* Content */}
-              <div className="flex-1">
-                <h3 className="font-headline text-3xl md:text-5xl font-black mb-4 group-hover:text-primary transition-colors duration-500 uppercase italic tracking-tighter">
+              <div className="flex-1 relative z-10">
+                <h3 className={`font-headline text-3xl md:text-5xl font-black mb-4 text-white ${service.themeColor} transition-colors duration-500 uppercase italic tracking-tighter`}>
                   {service.title}
                 </h3>
                 <p className="text-on-surface-variant text-base md:text-lg max-w-2xl leading-relaxed">
@@ -63,9 +162,9 @@ export default function Services() {
                 </p>
               </div>
               
-              {/* Icon */}
-              <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-primary group-hover:bg-primary/5 transition-all duration-500 shrink-0">
-                <service.icon className="w-6 h-6 md:w-8 md:h-8 text-white/30 group-hover:text-primary transition-colors" />
+              {/* Custom Animated Full SVG Element */}
+              <div className="flex items-center justify-center group-hover:scale-110 transition-transform duration-700 shrink-0 relative z-10 pr-4">
+                <service.CustomSvg />
               </div>
             </div>
           </ScrollReveal>
