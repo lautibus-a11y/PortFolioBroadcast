@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Phone, ArrowUpRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import Button from "./Button";
@@ -34,6 +35,16 @@ const VisualFrame = ({ isMobile }: { isMobile?: boolean }) => (
 );
 
 export default function Hero() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = ["Diseño", "Desarrollo"];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative min-h-[100svh] pt-32 pb-20 px-6 md:px-12 overflow-hidden flex items-center" 
              style={{ 
@@ -59,32 +70,41 @@ export default function Hero() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.2} distance={30} blur={true}>
-            <h1 className="font-headline text-3xl sm:text-5xl md:text-8xl font-black text-white leading-[0.95] tracking-tighter mb-8 uppercase italic">
-              Diseño y <br/> 
-              <span className="font-light text-white/20">Arquitectura Digital</span>
+            <h1 className="font-headline text-4xl sm:text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter mb-8 uppercase italic flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-1">
+              <span className="inline-flex items-center whitespace-nowrap overflow-hidden h-[1.3em] relative text-primary justify-center lg:justify-start -mb-2 sm:mb-0">
+                <AnimatePresence mode="popLayout">
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ y: 60, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -60, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="absolute left-0 lg:static"
+                  >
+                    {words[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+                {/* Invisible spacer to reserve width based on longest word */}
+                <span className="opacity-0 pointer-events-none">{words[1]}</span>
+              </span>
+              <span>y</span>
+              <span className="font-light text-white/20 w-full text-center lg:text-left">Arquitectura Digital</span>
             </h1>
           </ScrollReveal>
 
-          {/* Render Visual Frame on Mobile just below Title */}
-          <ScrollReveal direction="none" delay={0.3} scale={true} blur={true}>
-            <div className="flex lg:hidden w-full relative z-20 justify-center mb-8">
-              <VisualFrame isMobile={true} />
-            </div>
-          </ScrollReveal>
-
           <ScrollReveal direction="up" delay={0.3} distance={30} blur={true}>
-            <p className="hidden lg:block text-on-surface-variant text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 font-body font-medium leading-[1.6] tracking-tight opacity-80">
+            <p className="block text-center lg:text-left text-on-surface-variant text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 font-body font-medium leading-[1.6] tracking-tight opacity-80">
               Transformo marcas emergentes en referentes de la industria a través de interfaces minimalistas y experiencias digitales diseñadas para generar impacto y resultados reales.
             </p>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.4} distance={30} blur={true}>
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-12">
-              <a href="https://wa.me/5491172023171" target="_blank" rel="noopener noreferrer" className="w-fit">
-                <Button icon={Phone} variant="primary">Agendá una llamada</Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-12 w-full">
+              <a href="https://wa.me/5491172023171" target="_blank" rel="noopener noreferrer" className="w-full sm:w-fit">
+                <Button icon={Phone} variant="primary" className="w-full justify-center text-sm py-4">Agendá una llamada</Button>
               </a>
-              <a href="#proyectos" className="w-fit">
-                <Button icon={ArrowUpRight} variant="secondary">Mirá mi laburo</Button>
+              <a href="#proyectos" className="w-full sm:w-fit">
+                <Button icon={ArrowUpRight} variant="secondary" className="w-full justify-center text-sm py-4">Mirá mi laburo</Button>
               </a>
             </div>
           </ScrollReveal>

@@ -27,8 +27,9 @@
 }
 
 @layer base {
-  body {
+  html, body {
     @apply bg-surface text-on-surface font-body tracking-tight overflow-x-hidden;
+    max-width: 100vw;
     background: radial-gradient(circle at top right, #1a2a1f 0%, #0e0e0e 50%),
                 radial-gradient(circle at bottom left, #0e1a14 0%, #0e0e0e 50%);
     background-attachment: fixed;
