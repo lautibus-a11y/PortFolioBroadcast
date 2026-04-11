@@ -151,7 +151,7 @@
             50% { transform: translateY(-15px) rotate(3deg); }
         }
         .quote-float {
-            font-size: 8rem;
+            font-size: 5rem; /* SMALLER FOR MOBILE */
             line-height: 1;
             font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-text-stroke: 1.5px var(--primary-light);
@@ -159,6 +159,25 @@
             opacity: 0.3;
             animation: float-quote 4s ease-in-out infinite;
             pointer-events: none;
+        }
+        @media (min-width: 1024px) {
+            .quote-float { font-size: 8rem; }
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(179, 255, 205, 0.2);
+            background-color: rgba(179, 255, 205, 0.08); /* NEON GREEN GLASS */
+            color: var(--primary-light);
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 3rem;
         }
 
         /* MODAL */
@@ -232,11 +251,11 @@
                         <span class="text-white/20 w-full text-center lg:text-left">Arquitectura Digital</span>
                     </h1>
                     
-                    <p class="reveal text-white/50 text-xl max-w-xl mx-auto lg:mx-0 mb-14 leading-relaxed font-medium relative">
+                    <p class="reveal text-white/50 text-xl max-w-xl mx-auto lg:mx-0 mb-14 leading-relaxed font-medium relative px-8 lg:px-0">
                         <!-- Floating Quotes -->
-                        <span class="quote-float absolute -top-16 -left-12 hidden lg:block">“</span>
+                        <span class="quote-float absolute -top-8 -left-4 lg:-top-16 lg:-left-12">“</span>
                         Transformo marcas emergentes mediante infraestructuras digitales de alto rendimiento y estéticas minimalistas pensadas para el impacto.
-                        <span class="quote-float absolute -bottom-20 -right-8 hidden lg:block">”</span>
+                        <span class="quote-float absolute -bottom-12 -right-4 lg:-bottom-20 lg:-right-8">”</span>
                     </p>
                     
                     <div class="reveal flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
@@ -307,9 +326,9 @@
         <!-- About Section -->
         <section id="sobre-mi" class="py-32 px-6 max-w-[1440px] mx-auto">
             <div class="text-center mb-20">
-                <div class="reveal inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/[0.02] mb-8">
-                    <i data-lucide="user" class="w-4 h-4 text-primary"></i>
-                    <span class="text-[11px] font-black tracking-[0.3em] uppercase">Sobre mí</span>
+                <div class="reveal section-badge">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                    <span>Sobre Mi</span>
                 </div>
                 <h2 class="reveal font-headline text-5xl md:text-8xl font-black uppercase tracking-tighter italic mb-20">
                     Mi Historia <span class="text-white/20">y Experiencia</span>
@@ -412,9 +431,9 @@
         <!-- Services Section -->
         <section id="servicios" class="py-32 px-6 max-w-[1440px] mx-auto">
             <div class="mb-24">
-                <div class="reveal inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/[0.02] mb-12">
-                    <i data-lucide="layers" class="w-4 h-4 text-primary"></i>
-                    <span class="text-[11px] font-black tracking-[0.3em] uppercase">Servicios</span>
+                <div class="reveal section-badge">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span>Servicios</span>
                 </div>
                 <h2 class="reveal font-headline text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none mb-12">
                     Soluciones <br> <span class="text-white/20">para Negocios</span>
@@ -468,8 +487,9 @@
         <!-- Portfolio Section -->
         <section id="proyectos" class="py-32 px-6 max-w-[1440px] mx-auto">
              <div class="mb-24">
-                <div class="reveal inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/[0.02] mb-12 uppercase font-black text-[10px] tracking-[0.3em]">
-                    <i data-lucide="grid" class="w-4 h-4 text-primary"></i> Proyectos
+                <div class="reveal section-badge">
+                    <i data-lucide="grid" class="w-4 h-4"></i>
+                    <span>Proyectos</span>
                 </div>
                 <h2 class="reveal font-headline text-5xl md:text-[10rem] font-black uppercase italic tracking-tighter leading-none mb-12">
                    Obra <span class="text-white/5">Digital</span>
