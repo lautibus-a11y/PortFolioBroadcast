@@ -5,18 +5,19 @@ import Button from "./Button";
 
 const VisualFrame = ({ isMobile }: { isMobile?: boolean }) => (
   <div className={`relative w-full flex justify-center group ${isMobile ? "max-w-[220px]" : "max-w-[340px] md:max-w-[420px]"}`}>
-    {/* Solid Glassmorphism Frame (Not a bubble) */}
+    {/* Solid Glassmorphism Frame (Optimized for performance) */}
     <motion.div
-      animate={{ y: [-10, 10, -10] }}
+      animate={{ y: [-8, 8, -8] }}
       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      className="relative z-20 w-full aspect-square rounded-[2rem] p-4 sm:p-6 bg-white/5 border border-white/20 shadow-2xl backdrop-blur-xl flex flex-col"
+      style={{ willChange: "transform" }}
+      className={`relative z-20 w-full aspect-square rounded-[2rem] p-4 sm:p-6 bg-white/5 border border-white/20 shadow-2xl flex flex-col ${isMobile ? "backdrop-blur-md" : "backdrop-blur-xl"}`}
     >
       {/* Container for Full Width Image */}
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#080808]">
         <img 
           src="/assets/hero/hero-main.png" 
           alt="Brand Logo" 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 will-change-transform"
           onError={(e) => { e.currentTarget.src = "https://picsum.photos/seed/elite/800/800" }}
         />
         
@@ -25,11 +26,9 @@ const VisualFrame = ({ isMobile }: { isMobile?: boolean }) => (
       </div>
     </motion.div>
 
-    {/* Secondary Glow Behind */}
-    <motion.div 
-      animate={{ opacity: [0.3, 0.6, 0.3] }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary/20 rounded-full w-[100%] h-[100%] blur-[60px] -z-10`} 
+    {/* Secondary Glow Behind (Static to prevent heavy repaint lag on mobile) */}
+    <div 
+      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary/20 rounded-full w-[100%] h-[100%] -z-10 opacity-50 ${isMobile ? "blur-[40px]" : "blur-[60px]"}`} 
     />
   </div>
 );
