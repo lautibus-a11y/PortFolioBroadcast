@@ -41,17 +41,18 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: 
-                radial-gradient(circle at 100% 0%, #1a2a1f 0%, #0e0e0e 50%),
-                radial-gradient(circle at 0% 100%, #101d16 0%, #0e0e0e 50%);
+            background: #020202; /* Absolute black base */
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(160, 255, 195, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(16, 29, 22, 0.8) 0%, transparent 50%);
         }
 
         .glow {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            opacity: 0.1;
-            filter: blur(140px);
+            opacity: 0.06; /* Very subtle glow */
+            filter: blur(160px);
             background: var(--primary);
             will-change: transform;
         }
