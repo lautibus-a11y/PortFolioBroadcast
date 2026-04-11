@@ -44,60 +44,78 @@ export default function Services() {
         titleThin="para generar impacto"
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-24 md:mb-40">
+      <div className="flex flex-col border-t border-white/10 mb-24 md:mb-40">
         {services.map((service, i) => (
-          <ScrollReveal key={service.title} delay={i * 0.1} direction="up" distance={40}>
-            <div className="glass-card p-8 sm:p-10 rounded-[2.5rem] h-full group">
-              <motion.div 
-                whileHover={{ rotateY: 180, scale: 1.1 }}
-                transition={{ duration: 0.6 }}
-                className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 group-hover:bg-primary transition-colors"
-              >
-                <service.icon className="text-primary group-hover:text-black w-6 h-6 sm:w-7 sm:h-7 transition-colors" />
-              </motion.div>
-              <h3 className="font-headline text-xl sm:text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="text-on-surface-variant text-xs sm:text-sm leading-relaxed">{service.description}</p>
+          <ScrollReveal key={service.title} delay={i * 0.1} direction="up" distance={20}>
+            <div className="group flex flex-col md:flex-row md:items-center py-10 md:py-16 border-b border-white/10 hover:bg-white/[0.01] transition-all duration-500 px-4 sm:px-8 gap-6 md:gap-12">
+              {/* Number */}
+              <div className="font-headline text-white/5 group-hover:text-primary/20 transition-colors duration-500 text-6xl md:text-8xl font-black italic tracking-tighter w-24 leading-none">
+                0{i + 1}
+              </div>
+              
+              {/* Content */}
+              <div className="flex-1">
+                <h3 className="font-headline text-3xl md:text-5xl font-black mb-4 group-hover:text-primary transition-colors duration-500 uppercase italic tracking-tighter">
+                  {service.title}
+                </h3>
+                <p className="text-on-surface-variant text-base md:text-lg max-w-2xl leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+              
+              {/* Icon */}
+              <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-primary group-hover:bg-primary/5 transition-all duration-500 shrink-0">
+                <service.icon className="w-6 h-6 md:w-8 md:h-8 text-white/30 group-hover:text-primary transition-colors" />
+              </div>
             </div>
           </ScrollReveal>
         ))}
       </div>
 
-      {/* Story Timeline */}
+      {/* Scroll Accordion Process */}
       <div className="mb-24 md:mb-40">
         <ScrollReveal direction="up">
           <div className="text-center mb-16 md:mb-20">
-            <h3 className="font-headline text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tighter mb-4">Nuestro <span className="text-primary">Proceso</span></h3>
+            <h3 className="font-headline text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tighter mb-4">Mi <span className="text-primary">Proceso</span></h3>
             <p className="text-on-surface-variant max-w-xl mx-auto font-medium text-sm sm:text-base">Un camino estructurado desde el concepto hasta la realidad.</p>
           </div>
         </ScrollReveal>
 
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute top-1/2 left-0 w-full h-px bg-white/10 hidden lg:block -translate-y-1/2"></div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
-            {steps.map((step, i) => (
-              <ScrollReveal key={step.title} delay={i * 0.2} direction="up">
-                <div className="group text-center px-4">
-                  <div className="relative mb-6 sm:mb-8 flex justify-center">
-                    <motion.div
-                      whileInView={{ scale: [0, 1.2, 1] }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.2, duration: 0.8 }}
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl glass-card flex items-center justify-center border-primary/20 group-hover:border-primary transition-all duration-500 bg-surface/80"
-                    >
-                      <step.icon className="text-primary w-6 h-6 sm:w-8 sm:h-8" />
-                    </motion.div>
-                    {i < steps.length - 1 && (
-                      <div className="absolute top-1/2 left-[calc(50%+4rem)] w-[calc(100%-8rem)] h-px bg-primary/20 hidden lg:block"></div>
-                    )}
-                  </div>
-                  <h4 className="font-headline text-lg sm:text-xl font-bold mb-2 uppercase italic tracking-wider">{step.title}</h4>
-                  <p className="text-on-surface-variant text-[10px] sm:text-xs font-medium px-2 sm:px-4">{step.desc}</p>
+        <div className="flex flex-col gap-4 max-w-3xl mx-auto px-4 sm:px-0">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.title}
+              initial="closed"
+              whileInView="open"
+              viewport={{ margin: "-25% 0px -25% 0px", amount: 0.3 }}
+              variants={{
+                open: { backgroundColor: "rgba(255,255,255,0.04)", borderColor: "rgba(160,255,195,0.2)", scale: 1.02 },
+                closed: { backgroundColor: "rgba(255,255,255,0.01)", borderColor: "rgba(255,255,255,0.05)", scale: 1 }
+              }}
+              className="border rounded-3xl p-6 sm:p-8 transition-all duration-500 overflow-hidden flex flex-col justify-center"
+            >
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <step.icon className="w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+                <h4 className="font-headline text-xl sm:text-3xl font-black uppercase italic tracking-wider">
+                  0{i + 1}. {step.title}
+                </h4>
+              </div>
+              <motion.div 
+                variants={{
+                  open: { height: "auto", opacity: 1, marginTop: "1rem" },
+                  closed: { height: 0, opacity: 0, marginTop: 0 }
+                }}
+                transition={{ duration: 0.4 }}
+                className="overflow-hidden"
+              >
+                <p className="text-on-surface-variant text-sm sm:text-base font-body pl-[4.5rem] sm:pl-[5.5rem]">
+                  {step.desc}
+                </p>
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
 
