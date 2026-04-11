@@ -307,7 +307,7 @@
             transform: translateY(-5px);
         }
 
-        /* PROJECT ALTERNATING FADE-IN */
+        /* PROJECT ALTERNATING FADE-IN (DESKTOP) & STACKING (MOBILE) */
         .project-card-container {
             width: 100%;
             margin-bottom: 8rem;
@@ -315,42 +315,42 @@
             perspective: 1000px;
         }
 
-        .project-card-container:nth-child(odd) { transform: translateX(-150px); opacity: 0; }
-        .project-card-container:nth-child(even) { transform: translateX(150px); opacity: 0; }
-        
-        .project-card-container.active {
-            transform: translateX(0);
-            opacity: 1;
+        /* Desktop: Alternating without stacking */
+        @media (min-width: 769px) {
+            .project-card-container:nth-child(odd) { transform: translateX(-150px); opacity: 0; }
+            .project-card-container:nth-child(even) { transform: translateX(150px); opacity: 0; }
+            
+            .project-card-container.active {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
+        /* Mobile: Fade-in left + Stacking */
         @media (max-width: 768px) {
             .project-card-container {
+                position: sticky;
+                top: var(--mobile-top, 80px); /* OFFSET INJECTED BY JS */
                 margin-bottom: 4rem;
                 padding: 0 20px;
+                transform: translateX(-100px); 
+                opacity: 0;
             }
-            .project-card-container:nth-child(odd),
-            .project-card-container:nth-child(even) { 
-                transform: translateY(40px); 
-            }
+            
             .project-card-container.active {
-                transform: translateY(0);
+                transform: translateX(0);
+                opacity: 1;
             }
+
             .project-glass {
                 padding: 2rem;
                 border-radius: 2.5rem;
                 flex-direction: column !important;
                 gap: 1.5rem;
             }
-            .project-glass h3 {
-                font-size: 1.75rem !important;
-            }
-            .project-glass p {
-                font-size: 0.9rem !important;
-                line-height: 1.5;
-            }
-            .project-glass .w-1\/2 {
-                width: 100% !important;
-            }
+            .project-glass h3 { font-size: 1.75rem !important; }
+            .project-glass p { font-size: 0.9rem !important; line-height: 1.5; }
+            .project-glass .w-1\/2 { width: 100% !important; }
         }
     </style>
 </head>
@@ -772,7 +772,7 @@
 
         const grid = document.getElementById('p-grid');
         ps.forEach((p, i) => {
-            const h = `<div class="reveal project-card-container w-full max-w-6xl mx-auto">
+            const h = `<div class="reveal project-card-container w-full max-w-6xl mx-auto" style="--mobile-top: ${70 + i * 20}px; z-index: ${i};">
                 <div class="project-glass flex flex-row gap-12 items-center">
                     <div class="w-1/2 aspect-video overflow-hidden rounded-[2.5rem] cursor-pointer relative group" onclick="openM(${i})">
                         <img loading="lazy" src="${p.img}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="P">
