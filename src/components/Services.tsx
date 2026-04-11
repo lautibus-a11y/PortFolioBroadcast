@@ -234,7 +234,7 @@ export default function Services() {
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col gap-4 max-w-3xl mx-auto px-4 sm:px-0">
+        <div className="flex flex-col max-w-3xl mx-auto px-4 sm:px-0 relative" style={{ gap: 0 }}>
           {steps.map((step, i) => (
             <motion.div
               key={step.title}
@@ -242,10 +242,26 @@ export default function Services() {
               whileInView="open"
               viewport={{ margin: "-25% 0px -25% 0px", amount: 0.3 }}
               variants={{
-                open: { backgroundColor: "rgba(255,255,255,0.04)", borderColor: step.color, scale: 1.02 },
-                closed: { backgroundColor: "rgba(255,255,255,0.01)", borderColor: "rgba(255,255,255,0.05)", scale: 1 }
+                open: { 
+                  backgroundColor: "rgba(255,255,255,0.06)", 
+                  borderColor: step.color, 
+                  scale: 1,
+                  y: 0,
+                  zIndex: 10,
+                  boxShadow: "0 -20px 60px rgba(0,0,0,0.5)"
+                },
+                closed: { 
+                  backgroundColor: "rgba(255,255,255,0.01)", 
+                  borderColor: "rgba(255,255,255,0.05)", 
+                  scale: 0.97,
+                  y: i === 0 ? 0 : -16,
+                  zIndex: i,
+                  boxShadow: "none"
+                }
               }}
-              className="border rounded-3xl p-6 sm:p-8 transition-all duration-500 overflow-hidden flex flex-col justify-center"
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="border rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-center relative"
+              style={{ marginTop: i === 0 ? 0 : "-12px" }}
             >
               <div className="flex items-center gap-6">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-white/[0.05] flex items-center justify-center shrink-0">
