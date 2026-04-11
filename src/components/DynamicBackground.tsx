@@ -1,6 +1,9 @@
 export default function DynamicBackground() {
   return (
-    <div className="fixed inset-0 z-0 bg-surface overflow-hidden pointer-events-none">
+    <div 
+      className="fixed inset-0 z-0 bg-surface overflow-hidden pointer-events-none"
+      style={{ willChange: "transform" }}
+    >
       {/* Static Green Gradients */}
       <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-primary/5 blur-[100px] md:blur-[150px] rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-primary/10 blur-[120px] md:blur-[180px] rounded-full" />

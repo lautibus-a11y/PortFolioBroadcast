@@ -38,8 +38,8 @@ export default function ScrollReveal({
         opacity: 0,
         x: getInitialX(),
         y: getInitialY(),
-        filter: blur ? "blur(10px)" : "none",
-        scale: scale ? 0.95 : 1,
+        filter: blur ? "blur(4px)" : "none",
+        scale: scale ? 0.98 : 1,
       }}
       whileInView={{
         opacity: 1,

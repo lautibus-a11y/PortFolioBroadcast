@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 w-full z-50 px-4 sm:px-6 pt-6 pointer-events-none">
-      <nav className="max-w-[1440px] mx-auto liquid-glass rounded-2xl flex items-center h-16 pointer-events-auto shadow-2xl overflow-hidden backdrop-blur-3xl">
+      <nav className="max-w-[1440px] mx-auto liquid-glass rounded-2xl flex items-center h-16 pointer-events-auto shadow-2xl overflow-hidden backdrop-blur-xl">
         {/* Logo Section */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
