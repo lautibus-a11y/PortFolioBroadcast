@@ -59,10 +59,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[100svh] pt-32 pb-20 px-6 md:px-12 overflow-hidden flex items-center" 
-             style={{ 
-               background: "radial-gradient(circle at 50% -20%, #1a2a1f 0%, #0e0e0e 70%)"
-             }}>
+    <section className="relative min-h-[100svh] pt-32 pb-20 px-6 md:px-12 overflow-hidden flex items-center">
       {/* Subtle Grid Overlay for Hero */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
            style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "40px 40px" }}>
