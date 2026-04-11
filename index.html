@@ -153,11 +153,29 @@
 
         /* DECK OF CARDS EFFECT (SERVICES) */
         .service-card {
-            transition: all 0.8s cubic-bezier(0.2, 1, 0.2, 1);
+            position: sticky;
+            top: 100px;
+            background: #020202;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 3.5rem;
+            margin-bottom: 4rem;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+            transform-origin: top center;
         }
+
         .service-card:hover {
-            transform: scale(0.98) translateY(-10px);
+            transform: scale(0.98) translateY(-5px);
             background: rgba(179, 255, 205, 0.05);
+            border-color: var(--primary);
+        }
+
+        /* Responsive adjustments for the deck */
+        @media (max-width: 768px) {
+            .service-card {
+                top: 80px;
+                border-radius: 2.5rem;
+                margin-bottom: 2rem;
+            }
         }
 
         /* HERO WORD CYCLER */
@@ -499,8 +517,8 @@
                 </h2>
             </div>
 
-            <div class="flex flex-col border-t border-white/10">
-                <div class="reveal service-card group border-b border-white/10 py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center hover:bg-primary/[0.03] transition-all relative overflow-hidden">
+            <div class="flex flex-col gap-0">
+                <div class="reveal service-card group py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center relative overflow-hidden" style="top: 120px;">
                     <div class="text-6xl md:text-9xl font-black italic text-white/5 transition-colors group-hover:text-primary w-40">01</div>
                     <div class="flex-1">
                         <h3 class="text-3xl md:text-6xl font-black italic uppercase group-hover:text-primary transition-colors mb-4">Paginas Web</h3>
@@ -508,7 +526,7 @@
                     </div>
                     <i data-lucide="monitor" style="color: #61DAFB;" class="w-16 h-16 opacity-20 group-hover:opacity-100 transition-all"></i>
                 </div>
-                <div class="reveal service-card group border-b border-white/10 py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center hover:bg-primary/[0.03] transition-all">
+                <div class="reveal service-card group py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center relative" style="top: 140px;">
                     <div class="text-6xl md:text-9xl font-black italic text-white/5 transition-colors group-hover:text-primary w-40">02</div>
                     <div class="flex-1">
                         <h3 class="text-3xl md:text-6xl font-black italic uppercase group-hover:text-primary transition-colors mb-4">Desarrollo Web</h3>
@@ -516,7 +534,7 @@
                     </div>
                     <i data-lucide="terminal-square" style="color: #E34F26;" class="w-16 h-16 opacity-20 group-hover:opacity-100 transition-all"></i>
                 </div>
-                <div class="reveal service-card group border-b border-white/10 py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center hover:bg-primary/[0.03] transition-all">
+                <div class="reveal service-card group py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center relative" style="top: 160px;">
                     <div class="text-6xl md:text-9xl font-black italic text-white/5 transition-colors group-hover:text-primary w-40">03</div>
                     <div class="flex-1">
                         <h3 class="text-3xl md:text-6xl font-black italic uppercase group-hover:text-primary transition-colors mb-4">E-commerce</h3>
@@ -524,7 +542,7 @@
                     </div>
                     <i data-lucide="shopping-bag" style="color: #96588A;" class="w-16 h-16 opacity-20 group-hover:opacity-100 transition-all"></i>
                 </div>
-                <div class="reveal service-card group border-b border-white/10 py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center hover:bg-primary/[0.03] transition-all">
+                <div class="reveal service-card group py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center relative" style="top: 180px;">
                     <div class="text-6xl md:text-9xl font-black italic text-white/5 transition-colors group-hover:text-primary w-40">04</div>
                     <div class="flex-1">
                         <h3 class="text-3xl md:text-6xl font-black italic uppercase group-hover:text-primary transition-colors mb-4">Apps Web</h3>
@@ -532,7 +550,7 @@
                     </div>
                     <i data-lucide="layout-dashboard" style="color: #FF3366;" class="w-16 h-16 opacity-20 group-hover:opacity-100 transition-all"></i>
                 </div>
-                <div class="reveal service-card group border-b border-white/10 py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center hover:bg-primary/[0.03] transition-all">
+                <div class="reveal service-card group py-16 px-8 flex flex-col lg:flex-row gap-10 items-start lg:items-center relative" style="top: 200px;">
                     <div class="text-6xl md:text-9xl font-black italic text-white/5 transition-colors group-hover:text-primary w-40">05</div>
                     <div class="flex-1">
                         <h3 class="text-3xl md:text-6xl font-black italic uppercase group-hover:text-primary transition-colors mb-4">Automatizacion IA</h3>
