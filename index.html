@@ -277,7 +277,7 @@
                         Soluciones Digitales
                     </div>
                     
-                    <h1 class="reveal font-headline text-5xl sm:text-6xl md:text-8xl font-black uppercase italic leading-[1.0] tracking-tighter mb-10 flex flex-wrap justify-center lg:justify-start gap-x-4">
+                    <h1 class="reveal font-headline text-4xl sm:text-6xl md:text-8xl font-black uppercase italic leading-[1.0] tracking-tighter mb-10 flex flex-wrap justify-center lg:justify-start gap-x-4">
                         <span class="relative overflow-hidden py-2 px-2 -mx-2">
                             <span id="hero-word" class="relative z-10 text-primary">Diseño</span>
                             <span id="word-highlight"></span>
@@ -359,7 +359,7 @@
         </div>
 
         <!-- About Section -->
-        <section id="sobre-mi" class="py-32 px-6 max-w-[1440px] mx-auto">
+        <section id="sobre-mi" class="py-20 md:py-32 px-6 max-w-[1440px] mx-auto">
             <div class="text-center mb-20">
                 <div class="reveal section-badge">
                     <i data-lucide="user" class="w-4 h-4"></i>
@@ -464,7 +464,7 @@
         </section>
 
         <!-- Services Section -->
-        <section id="servicios" class="py-32 px-6 max-w-[1440px] mx-auto">
+        <section id="servicios" class="py-20 md:py-32 px-6 max-w-[1440px] mx-auto">
             <div class="mb-24">
                 <div class="reveal section-badge">
                     <i data-lucide="layers" class="w-4 h-4"></i>
@@ -520,7 +520,7 @@
         </section>
 
         <!-- Portfolio Section -->
-        <section id="proyectos" class="py-32 px-6 max-w-[1440px] mx-auto">
+        <section id="proyectos" class="py-20 md:py-32 px-6 max-w-[1440px] mx-auto">
              <div class="mb-24">
                 <div class="reveal section-badge">
                     <i data-lucide="grid" class="w-4 h-4"></i>
@@ -649,7 +649,7 @@
         const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
         // Word Cycler Magic
-        const words = ['Diseño', 'Desarrollo', 'Automatización'];
+        const words = ['Diseño', 'Desarrollo', 'Automatiza'];
         let wordIdx = 0;
         const heroWord = document.getElementById('hero-word');
         const container = heroWord.parentElement;
