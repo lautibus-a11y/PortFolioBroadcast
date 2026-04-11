@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Layers, Code2, Store, Search, Briefcase, Lightbulb, PenTool, Terminal, Rocket, Phone, ArrowUpRight } from "lucide-react";
+import { Briefcase, Phone, ArrowUpRight } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import ScrollReveal from "./ScrollReveal";
 import Button from "./Button";
@@ -123,11 +123,65 @@ const services = [
   }
 ];
 
+// --- Process step SVGs: 2 color variations ---
+const IdeaIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-8 h-8 overflow-visible">
+    <motion.circle cx="50" cy="42" r="22" fill="none" stroke="#a0ffc3" strokeWidth="4"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1 }} />
+    <motion.path d="M 40,64 L 40,72 L 60,72 L 60,64" fill="none" stroke="#a0ffc3" strokeWidth="3" strokeLinejoin="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
+      transition={{ delay: 0.6, duration: 0.6 }} />
+    <motion.line x1="50" y1="20" x2="50" y2="14" stroke="rgba(160,255,195,0.5)" strokeWidth="3" strokeLinecap="round"
+      initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.9 }} />
+    <motion.line x1="68" y1="24" x2="72" y2="20" stroke="rgba(160,255,195,0.5)" strokeWidth="3" strokeLinecap="round"
+      initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1 }} />
+    <motion.line x1="32" y1="24" x2="28" y2="20" stroke="rgba(160,255,195,0.5)" strokeWidth="3" strokeLinecap="round"
+      initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1.1 }} />
+    <motion.circle cx="50" cy="42" r="5" fill="#a0ffc3" initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }} />
+  </motion.svg>
+);
+
+const DesignStepIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-8 h-8 overflow-visible">
+    <motion.circle cx="50" cy="50" r="30" fill="none" stroke="#ffffff" strokeWidth="4"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1 }} />
+    <motion.path d="M 35,50 L 47,62 L 65,38" fill="none" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
+      transition={{ delay: 0.6, duration: 0.7 }} />
+  </motion.svg>
+);
+
+const DevStepIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-8 h-8 overflow-visible">
+    <motion.path d="M 30,35 L 15,50 L 30,65 M 70,35 L 85,50 L 70,65 M 58,25 L 42,75"
+      fill="none" stroke="#a0ffc3" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1.3 }} />
+  </motion.svg>
+);
+
+const LaunchIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-8 h-8 overflow-visible">
+    <motion.path d="M 50,80 L 50,30 M 50,30 C 50,30 65,45 80,40 C 65,55 50,50 50,50"
+      fill="none" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1.2 }} />
+    <motion.path d="M 50,30 C 50,30 35,45 20,40 C 35,55 50,50 50,50"
+      fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }}
+      transition={{ delay: 0.4, duration: 0.8 }} />
+    <motion.circle cx="50" cy="80" r="6" fill="rgba(255,255,255,0.3)"
+      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 1 }} />
+  </motion.svg>
+);
+
 const steps = [
-  { icon: Lightbulb, title: "Idea", desc: "Conceptualización y estrategia inicial." },
-  { icon: PenTool, title: "Diseño", desc: "Creación de la interfaz visual y UX." },
-  { icon: Terminal, title: "Desarrollo", desc: "Programación y arquitectura técnica." },
-  { icon: Rocket, title: "Entrega", desc: "Lanzamiento y optimización final." },
+  { CustomSvg: IdeaIcon, color: "rgba(160,255,195,0.2)", title: "Idea", desc: "Conceptualización y estrategia inicial." },
+  { CustomSvg: DesignStepIcon, color: "rgba(255,255,255,0.15)", title: "Diseño", desc: "Creación de la interfaz visual y UX." },
+  { CustomSvg: DevStepIcon, color: "rgba(160,255,195,0.2)", title: "Desarrollo", desc: "Programación y arquitectura técnica." },
+  { CustomSvg: LaunchIcon, color: "rgba(255,255,255,0.15)", title: "Entrega", desc: "Lanzamiento y optimización final." },
 ];
 
 export default function Services() {
@@ -188,14 +242,14 @@ export default function Services() {
               whileInView="open"
               viewport={{ margin: "-25% 0px -25% 0px", amount: 0.3 }}
               variants={{
-                open: { backgroundColor: "rgba(255,255,255,0.04)", borderColor: "rgba(160,255,195,0.2)", scale: 1.02 },
+                open: { backgroundColor: "rgba(255,255,255,0.04)", borderColor: step.color, scale: 1.02 },
                 closed: { backgroundColor: "rgba(255,255,255,0.01)", borderColor: "rgba(255,255,255,0.05)", scale: 1 }
               }}
               className="border rounded-3xl p-6 sm:p-8 transition-all duration-500 overflow-hidden flex flex-col justify-center"
             >
               <div className="flex items-center gap-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <step.icon className="w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-white/[0.05] flex items-center justify-center shrink-0">
+                  <step.CustomSvg />
                 </div>
                 <h4 className="font-headline text-xl sm:text-3xl font-black uppercase italic tracking-wider">
                   0{i + 1}. {step.title}

@@ -1,13 +1,85 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Terminal, Brush, ShoppingCart, Database, Code, User, GraduationCap } from "lucide-react";
+import { Code, User, GraduationCap } from "lucide-react";
+
+// --- Animated SVG Icons (all white palette) ---
+const ReactIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-12 h-12 overflow-visible">
+    <motion.ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke="#ffffff" strokeWidth="3"
+      initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1.2, ease: "easeInOut" }} />
+    <motion.ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="3"
+      style={{ transform: "rotate(60deg)", transformOrigin: "50px 50px" }}
+      initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+      transition={{ delay: 0.3, duration: 1.2, ease: "easeInOut" }} />
+    <motion.ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="3"
+      style={{ transform: "rotate(120deg)", transformOrigin: "50px 50px" }}
+      initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+      transition={{ delay: 0.6, duration: 1.2, ease: "easeInOut" }} />
+    <motion.circle cx="50" cy="50" r="6" fill="#ffffff"
+      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.9, duration: 0.4 }} />
+  </motion.svg>
+);
+
+const UiIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-12 h-12 overflow-visible">
+    <motion.rect x="15" y="20" width="70" height="55" rx="8" fill="none" stroke="#ffffff" strokeWidth="3"
+      initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1.2 }} />
+    <motion.path d="M 15,35 L 85,35" stroke="rgba(255,255,255,0.4)" strokeWidth="2"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ delay: 0.4, duration: 0.8 }} />
+    <motion.circle cx="24" cy="27.5" r="3" fill="rgba(255,255,255,0.6)"
+      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} />
+    <motion.circle cx="33" cy="27.5" r="3" fill="rgba(255,255,255,0.35)"
+      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.7 }} />
+    <motion.path d="M 30,55 L 45,45 L 55,58 L 65,48 L 78,60"
+      fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ delay: 0.8, duration: 1 }} />
+  </motion.svg>
+);
+
+const WooIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-12 h-12 overflow-visible">
+    <motion.path d="M 20,40 L 50,20 L 80,40 L 80,75 L 20,75 Z" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinejoin="round"
+      initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1.3, ease: "easeInOut" }} />
+    <motion.path d="M 38,75 L 38,55 L 62,55 L 62,75" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="3"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ delay: 0.8, duration: 0.8 }} />
+    <motion.circle cx="50" cy="36" r="5" fill="#ffffff"
+      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.2 }} />
+  </motion.svg>
+);
+
+const WpIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-12 h-12 overflow-visible">
+    <motion.circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" strokeWidth="3"
+      initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1.2 }} />
+    <motion.path d="M 25,50 Q 35,30 50,50 Q 65,70 75,50"
+      fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="3" strokeLinecap="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 1 }} />
+    <motion.line x1="50" y1="15" x2="50" y2="85" stroke="rgba(255,255,255,0.2)" strokeWidth="2"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ delay: 0.8, duration: 0.6 }} />
+  </motion.svg>
+);
+
+const CssIcon = () => (
+  <motion.svg viewBox="0 0 100 100" className="w-12 h-12 overflow-visible">
+    <motion.path d="M 28,20 L 72,20 L 65,80 L 50,85 L 35,80 Z" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinejoin="round"
+      initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+      transition={{ duration: 1.3 }} />
+    <motion.path d="M 38,35 L 62,35 M 40,50 L 60,50 M 43,65 L 50,68 L 57,65"
+      stroke="rgba(255,255,255,0.5)" strokeWidth="2.5" strokeLinecap="round"
+      initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ delay: 0.6, duration: 0.9 }} />
+  </motion.svg>
+);
 
 const skills = [
-  { icon: Terminal, title: "React", category: "Desarrollo", level: 90 },
-  { icon: Brush, title: "UI/UX", category: "Diseño Visual", level: 95 },
-  { icon: ShoppingCart, title: "WooCommerce", category: "E-commerce", level: 85 },
-  { icon: Database, title: "WordPress", category: "CMS Pro", level: 95 },
-  { icon: Code, title: "Clean CSS", category: "Front-end", level: 95 },
+  { CustomSvg: ReactIcon, title: "React", category: "Desarrollo", level: 90 },
+  { CustomSvg: UiIcon, title: "UI/UX", category: "Diseño Visual", level: 95 },
+  { CustomSvg: WooIcon, title: "WooCommerce", category: "E-commerce", level: 85 },
+  { CustomSvg: WpIcon, title: "WordPress", category: "CMS Pro", level: 95 },
+  { CustomSvg: CssIcon, title: "Clean CSS", category: "Front-end", level: 95 },
 ];
 
 const formation = [
@@ -124,8 +196,8 @@ export default function About() {
               className="group p-8 glass-card rounded-[2.5rem] relative overflow-hidden"
             >
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
-                  <skill.icon className="text-primary w-7 h-7" />
+                <div className="w-14 h-14 flex items-center justify-center mb-8 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.35)] transition-all duration-700">
+                  <skill.CustomSvg />
                 </div>
                 <h4 className="font-headline font-bold text-xl mb-1">{skill.title}</h4>
                 <p className="text-[10px] text-on-surface-variant uppercase tracking-widest mb-8">{skill.category}</p>
