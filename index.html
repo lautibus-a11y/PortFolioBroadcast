@@ -161,16 +161,23 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 4rem;
             margin-bottom: 5rem;
-            transition: all 0.6s cubic-bezier(0.2, 1, 0.2, 1);
-            transform-origin: top center;
+            transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
+            transform-origin: center;
             box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.3);
         }
 
+        .service-card:nth-child(odd) { transform: translateX(-150px); opacity: 0; }
+        .service-card:nth-child(even) { transform: translateX(150px); opacity: 0; }
+
+        .service-card.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
         .service-card:hover {
-            transform: scale(0.98) translateY(-5px);
+            transform: scale(0.98);
             background: rgba(255, 255, 255, 0.05);
             border-color: var(--primary);
-            box-shadow: 0 0 40px rgba(160, 255, 195, 0.1);
         }
 
         /* SVG ANIMATIONS */
