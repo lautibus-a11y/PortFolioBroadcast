@@ -49,14 +49,26 @@
                 radial-gradient(circle at 0% 100%, rgba(16, 29, 22, 0.6) 0%, transparent 50%);
         }
 
+        @media (max-width: 768px) {
+            #bg-canvas {
+                background-image: 
+                    radial-gradient(circle at 50% 0%, rgba(160, 255, 195, 0.12) 0%, transparent 70%),
+                    radial-gradient(circle at 50% 100%, rgba(16, 29, 22, 0.9) 0%, transparent 70%);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.05; }
+            50% { transform: scale(1.2) translate(10px, -20px); opacity: 0.08; }
+        }
+
         .glow {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            opacity: 0.05;
             filter: blur(160px);
             background: var(--primary);
-            will-change: transform;
+            animation: pulse-glow 8s ease-in-out infinite;
         }
 
         /* GRAIN OVERLAY */
