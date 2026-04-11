@@ -293,13 +293,12 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
 
         .project-glass {
-            background: #080808; /* SOLID DARK COLOR TO MASK PREVIOUS CARDS */
             background: #080808;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 4rem;
             padding: 4rem;
             transition: all 0.5s ease;
-            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             width: 100%;
         }
 
@@ -308,29 +307,33 @@
             transform: translateY(-5px);
         }
 
-        /* PROJECT STACKING EFFECT */
+        /* PROJECT ALTERNATING FADE-IN */
         .project-card-container {
-            position: sticky;
-            top: 120px;
             width: 100%;
-            margin-bottom: 6rem;
-            transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
+            margin-bottom: 8rem;
+            transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
             perspective: 1000px;
         }
 
-        .project-card-container:nth-child(odd) { transform: translateX(-100px) rotateY(10deg); opacity: 0; }
-        .project-card-container:nth-child(even) { transform: translateX(100px) rotateY(-10deg); opacity: 0; }
+        .project-card-container:nth-child(odd) { transform: translateX(-150px); opacity: 0; }
+        .project-card-container:nth-child(even) { transform: translateX(150px); opacity: 0; }
         
         .project-card-container.active {
-            transform: translateX(0) rotateY(0);
+            transform: translateX(0);
             opacity: 1;
         }
 
         @media (max-width: 768px) {
             .project-card-container {
-                top: 70px !important;
-                margin-bottom: 2rem;
-                padding: 0 10px;
+                margin-bottom: 4rem;
+                padding: 0 20px;
+            }
+            .project-card-container:nth-child(odd),
+            .project-card-container:nth-child(even) { 
+                transform: translateY(40px); 
+            }
+            .project-card-container.active {
+                transform: translateY(0);
             }
             .project-glass {
                 padding: 2rem;
@@ -769,9 +772,7 @@
 
         const grid = document.getElementById('p-grid');
         ps.forEach((p, i) => {
-            // Alternate top offset to prevent perfect overlap and show "deck" edge
-            const topOffset = window.innerWidth > 768 ? (120 + i * 40) : (70 + i * 20);
-            const h = `<div class="reveal project-card-container w-full max-w-6xl mx-auto" style="top: ${topOffset}px; z-index: ${i};">
+            const h = `<div class="reveal project-card-container w-full max-w-6xl mx-auto">
                 <div class="project-glass flex flex-row gap-12 items-center">
                     <div class="w-1/2 aspect-video overflow-hidden rounded-[2.5rem] cursor-pointer relative group" onclick="openM(${i})">
                         <img loading="lazy" src="${p.img}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="P">
