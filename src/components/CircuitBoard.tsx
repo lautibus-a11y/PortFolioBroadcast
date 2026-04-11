@@ -13,7 +13,8 @@ export default function CircuitBoard() {
     let height = canvas.height = canvas.offsetHeight;
 
     const tracks: Track[] = [];
-    const trackCount = 15;
+    const isMobile = window.innerWidth < 768;
+    const trackCount = isMobile ? 3 : 15;
 
     class Track {
       x: number;
@@ -103,6 +104,7 @@ export default function CircuitBoard() {
       tracks.push(new Track());
     }
 
+
     let animationId: number;
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
@@ -110,10 +112,17 @@ export default function CircuitBoard() {
         track.update();
         track.draw(ctx);
       });
-      animationId = requestAnimationFrame(animate);
+      if (!isMobile) {
+        animationId = requestAnimationFrame(animate);
+      }
     };
 
-    animate();
+    if (isMobile) {
+      // Draw a static frame on mobile
+      tracks.forEach(track => track.draw(ctx));
+    } else {
+      animate();
+    }
 
     const handleResize = () => {
       width = canvas.width = canvas.offsetWidth;
