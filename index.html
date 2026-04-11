@@ -249,9 +249,12 @@
         <section class="min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden">
             <div class="max-w-[1440px] mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div class="text-center lg:text-left">
-                    <div class="reveal inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-10 uppercase font-black text-[9px] tracking-[0.3em]">
-                        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-                        Architecting the Future
+                    <div class="reveal inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/[0.02] mb-10 uppercase font-black text-[9px] tracking-[0.3em]">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-light opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-light"></span>
+                        </span>
+                        Soluciones Digitales
                     </div>
                     
                     <h1 class="reveal font-headline text-5xl sm:text-6xl md:text-8xl font-black uppercase italic leading-[1.0] tracking-tighter mb-10 flex flex-wrap justify-center lg:justify-start gap-x-4">
@@ -625,6 +628,21 @@
 
         const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        // Word Cycler Magic
+        const words = ['Diseño', 'Desarrollo', 'Automatización'];
+        let wordIdx = 0;
+        const heroWord = document.getElementById('hero-word');
+        const container = heroWord.parentElement;
+
+        setInterval(() => {
+            container.classList.add('highlighting');
+            setTimeout(() => {
+                wordIdx = (wordIdx + 1) % words.length;
+                heroWord.innerText = words[wordIdx];
+                container.classList.remove('highlighting');
+            }, 600);
+        }, 3000);
+
         lucide.createIcons();
     </script>
 </body>
