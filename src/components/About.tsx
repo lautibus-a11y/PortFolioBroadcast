@@ -201,7 +201,7 @@ export default function About() {
               className="group p-8 glass-card rounded-[2.5rem] relative overflow-hidden"
             >
               <div className="relative z-10">
-                <div className="w-14 h-14 flex items-center justify-center mb-8 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.35)] transition-all duration-700">
+                <div className="w-14 h-14 flex items-center justify-center mb-8 transition-all duration-700 group-hover:scale-110">
                   <skill.CustomSvg />
                 </div>
                 <h4 className="font-headline font-bold text-xl mb-1">{skill.title}</h4>
