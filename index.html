@@ -143,7 +143,23 @@
 
         /* RIBBON */
         @keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .animate-scroll { animation: scroll-x 20s linear infinite; }
+        .animate-scroll { animation: scroll-x 12s linear infinite; } /* SPEED UP FOR MOBILE IMPACT */
+
+        /* FLOATING QUOTES */
+        @keyframes float-quote {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        .quote-float {
+            font-size: 8rem;
+            line-height: 1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-text-stroke: 1.5px var(--primary-light);
+            color: transparent;
+            opacity: 0.3;
+            animation: float-quote 4s ease-in-out infinite;
+            pointer-events: none;
+        }
 
         /* MODAL */
         #modal { display: none; opacity: 0; transition: opacity 0.3s ease; }
@@ -216,8 +232,11 @@
                         <span class="text-white/20 w-full text-center lg:text-left">Arquitectura Digital</span>
                     </h1>
                     
-                    <p class="reveal text-on-surface-variant text-lg md:text-xl max-w-xl mx-auto lg:mx-0 mb-12 leading-relaxed">
+                    <p class="reveal text-white/50 text-xl max-w-xl mx-auto lg:mx-0 mb-14 leading-relaxed font-medium relative">
+                        <!-- Floating Quotes -->
+                        <span class="quote-float absolute -top-16 -left-12 hidden lg:block">“</span>
                         Transformo marcas emergentes mediante infraestructuras digitales de alto rendimiento y estéticas minimalistas pensadas para el impacto.
+                        <span class="quote-float absolute -bottom-20 -right-8 hidden lg:block">”</span>
                     </p>
                     
                     <div class="reveal flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
@@ -244,41 +263,42 @@
             </div>
         </section>
 
-        <!-- Ribbon -->
+        <!-- Infinite Ribbon -->
         <div class="w-full overflow-hidden bg-white/5 border-y border-white/5 py-8">
             <div class="flex gap-16 items-center animate-scroll whitespace-nowrap">
                 <div class="flex gap-16 items-center shrink-0">
-                    <span class="text-primary font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-primary rounded-full"></span> PÁGINAS WEB
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> PÁGINAS WEB
                     </span>
-                    <span class="text-white/20 font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-white/5 rounded-full"></span> APLICACIONES WEB
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> APLICACIONES WEB
                     </span>
-                    <span class="text-primary font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-primary rounded-full"></span> SOFTWARE A MEDIDA
+                    <span class="text-white font-headline font-black text-xl italic uppercase flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> SOFTWARE A MEDIDA
                     </span>
-                    <span class="text-white/20 font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-white/5 rounded-full"></span> CHATBOTS
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> CHATBOTS
                     </span>
-                    <span class="text-primary font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-primary rounded-full"></span> IA AUTOMATION
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> IA AUTOMATION
                     </span>
                 </div>
+                <!-- Duplicate for seamless loop -->
                 <div class="flex gap-16 items-center shrink-0">
-                    <span class="text-primary font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-primary rounded-full"></span> PÁGINAS WEB
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> PÁGINAS WEB
                     </span>
-                    <span class="text-white/20 font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-white/5 rounded-full"></span> APLICACIONES WEB
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> APLICACIONES WEB
                     </span>
-                    <span class="text-primary font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-primary rounded-full"></span> SOFTWARE A MEDIDA
+                    <span class="text-white font-headline font-black text-xl italic uppercase flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> SOFTWARE A MEDIDA
                     </span>
-                    <span class="text-white/20 font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-white/5 rounded-full"></span> CHATBOTS
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> CHATBOTS
                     </span>
-                    <span class="text-primary font-headline font-black text-xl uppercase italic flex items-center gap-6">
-                        <span class="w-2.5 h-2.5 bg-primary rounded-full"></span> IA AUTOMATION
+                    <span class="text-white font-headline font-black text-xl uppercase italic flex items-center gap-6">
+                        <span class="w-2.5 h-2.5 bg-primary-light rounded-full"></span> IA AUTOMATION
                     </span>
                 </div>
             </div>
@@ -314,7 +334,7 @@
                         </div>
                     </div>
                     
-                    <div id="tab-content" class="p-8 md:p-12 font-mono text-sm md:text-lg min-h-[400px]">
+            <div id="tab-content" class="p-4 md:p-12 font-mono text-xs md:text-lg min-h-[350px]">
                         <div id="content-about">
                             <p class="leading-relaxed">
                                 <span class="terminal-cursor"></span>
@@ -350,7 +370,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
                 <div class="reveal glass-card p-10 rounded-[2.5rem] text-center group">
                     <div class="w-14 h-14 mx-auto mb-6 flex items-center justify-center transition-transform group-hover:scale-110"><i data-lucide="atom" style="color: #61DAFB;" class="w-8 h-8"></i></div>
                     <span class="text-[10px] font-black uppercase tracking-widest block mb-4">React JS</span>
@@ -456,7 +476,7 @@
                 </h2>
             </div>
             
-            <div id="p-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+            <div id="p-grid" class="grid grid-cols-1 md:grid-cols-3 gap-16">
                  <!-- Project loop -->
             </div>
         </section>
