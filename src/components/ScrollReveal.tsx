@@ -20,6 +20,8 @@ export default function ScrollReveal({
   blur = true,
   scale = true,
 }: ScrollRevealProps) {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   const getInitialX = () => {
     if (direction === "left") return -distance;
     if (direction === "right") return distance;
@@ -38,7 +40,7 @@ export default function ScrollReveal({
         opacity: 0,
         x: getInitialX(),
         y: getInitialY(),
-        filter: blur ? "blur(4px)" : "none",
+        filter: (blur && !isMobile) ? "blur(4px)" : "none",
         scale: scale ? 0.98 : 1,
       }}
       whileInView={{

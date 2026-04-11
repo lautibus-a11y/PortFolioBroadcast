@@ -5,7 +5,7 @@ import ScrollReveal from "./ScrollReveal";
 import Button from "./Button";
 
 const DesignIcon = () => (
-  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(34,211,238,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.6)] transition-all duration-700">
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible transition-all duration-700">
     <motion.path
       d="M 20,50 C 20,20 80,20 80,50 C 80,80 20,80 20,50"
       fill="none"
@@ -21,7 +21,7 @@ const DesignIcon = () => (
 );
 
 const DevIcon = () => (
-  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(160,255,195,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(160,255,195,0.6)] transition-all duration-700">
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible transition-all duration-700">
     <motion.path
       d="M 35,30 L 15,50 L 35,70 M 65,30 L 85,50 L 65,70 M 55,20 L 45,80"
       fill="none"
@@ -39,7 +39,7 @@ const DevIcon = () => (
 );
 
 const EcomIcon = () => (
-  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(232,121,249,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(232,121,249,0.6)] transition-all duration-700">
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible transition-all duration-700">
     <motion.path
       d="M 20,35 L 80,35 L 70,80 L 30,80 Z"
       fill="none"
@@ -65,7 +65,7 @@ const EcomIcon = () => (
 );
 
 const SeoIcon = () => (
-  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible drop-shadow-[0_0_15px_rgba(251,191,36,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(251,191,36,0.6)] transition-all duration-700">
+  <motion.svg viewBox="0 0 100 100" className="w-16 h-16 md:w-28 md:h-28 overflow-visible transition-all duration-700">
     <motion.path
       d="M 20,80 L 40,60 L 60,70 L 90,30"
       fill="none"
@@ -198,8 +198,8 @@ export default function Services() {
         {services.map((service, i) => (
           <ScrollReveal key={service.title} delay={i * 0.1} direction="up" distance={20}>
             <div className="group flex flex-col md:flex-row md:items-center py-10 md:py-16 border-b border-white/10 hover:bg-white/[0.01] transition-all duration-500 px-4 sm:px-8 gap-6 md:gap-12 relative overflow-hidden">
-              {/* Highlight gradient on hover */}
-              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none blur-[100px] ${service.bgHover}`} />
+              {/* Highlight gradient on hover - Reduced blur for mobile */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none blur-[40px] md:blur-[100px] ${service.bgHover}`} />
 
               {/* Number */}
               <div className={`font-headline text-white/5 ${service.themeColor} transition-colors duration-500 text-6xl md:text-8xl font-black italic tracking-tighter w-24 leading-none relative z-10`}>
