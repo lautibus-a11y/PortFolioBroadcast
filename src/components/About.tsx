@@ -166,18 +166,23 @@ export default function About() {
             )}
 
             {tab === "formation" && (
-              <div style={{ borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: "2rem" }}>
+              <div className="space-y-6 pt-4">
                 {formation.map((item, i) => (
-                  <div key={i} style={{ position: "relative", marginBottom: i < formation.length - 1 ? "2.5rem" : 0 }}>
-                    <div style={{
-                      position: "absolute", left: -33, top: 6,
-                      width: 14, height: 14, borderRadius: "50%",
-                      border: "2px solid #a0ffc3", background: "#0e0e0e",
-                      boxShadow: "0 0 10px rgba(160,255,195,0.4)"
-                    }} />
-                    <div style={{ color: "#a0ffc3", fontWeight: 700, marginBottom: 4 }}>{item.title}</div>
-                    <div style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", lineHeight: 1.6 }}>{item.desc}</div>
-                  </div>
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="p-6 bg-white rounded-2xl border border-white/10 shadow-xl group/item"
+                  >
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="w-8 h-8 rounded-lg bg-[#0e0e0e] flex items-center justify-center">
+                         <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(160,255,195,0.8)]" />
+                      </div>
+                      <div className="font-headline font-black text-[#0e0e0e] text-lg uppercase italic tracking-tight">{item.title}</div>
+                    </div>
+                    <div className="text-[#0e0e0e]/60 font-body text-sm leading-relaxed pl-12">{item.desc}</div>
+                  </motion.div>
                 ))}
               </div>
             )}

@@ -234,7 +234,7 @@ export default function Services() {
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col max-w-3xl mx-auto px-4 sm:px-0 relative" style={{ gap: 0 }}>
+        <div className="flex flex-col gap-4 max-w-3xl mx-auto px-4 sm:px-0">
           {steps.map((step, i) => (
             <motion.div
               key={step.title}
@@ -242,26 +242,11 @@ export default function Services() {
               whileInView="open"
               viewport={{ margin: "-25% 0px -25% 0px", amount: 0.3 }}
               variants={{
-                open: { 
-                  backgroundColor: "rgba(255,255,255,0.06)", 
-                  borderColor: step.color, 
-                  scale: 1,
-                  y: 0,
-                  zIndex: 10,
-                  boxShadow: "0 -20px 60px rgba(0,0,0,0.5)"
-                },
-                closed: { 
-                  backgroundColor: "rgba(255,255,255,0.01)", 
-                  borderColor: "rgba(255,255,255,0.05)", 
-                  scale: 0.97,
-                  y: i === 0 ? 0 : -16,
-                  zIndex: i,
-                  boxShadow: "none"
-                }
+                open: { backgroundColor: "rgba(255,255,255,0.04)", borderColor: step.color, scale: 1.02 },
+                closed: { backgroundColor: "rgba(255,255,255,0.01)", borderColor: "rgba(255,255,255,0.05)", scale: 1 }
               }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="border rounded-3xl p-6 sm:p-8 overflow-hidden flex flex-col justify-center relative"
-              style={{ marginTop: i === 0 ? 0 : "-12px" }}
             >
               <div className="flex items-center gap-6">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-white/[0.05] flex items-center justify-center shrink-0">
@@ -289,25 +274,34 @@ export default function Services() {
       </div>
 
       <ScrollReveal direction="none" distance={0} scale={true} blur={true}>
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-12 bg-white/[0.03] backdrop-blur-3xl p-8 sm:p-12 md:p-16 rounded-[2.5rem] sm:rounded-[4rem] border border-white/10 relative overflow-hidden group text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-12 bg-white p-8 sm:p-12 md:p-16 rounded-[2.5rem] sm:rounded-[4rem] relative overflow-hidden group text-center lg:text-left">
           <div className="relative z-10 max-w-xl">
-            <h3 className="font-headline text-3xl sm:text-4xl md:text-6xl font-black mb-6 leading-[0.9] uppercase italic tracking-tighter">
-              ¿Listo para <br/> elevar tu <br/> <span className="text-primary">negocio</span>?
+            <h3 className="font-headline text-3xl sm:text-4xl md:text-6xl font-black mb-6 leading-[0.9] uppercase italic tracking-tighter text-[#0e0e0e]">
+              ¿Listo para <br/> elevar tu <br/> <span className="text-primary" style={{ WebkitTextStroke: "2px #0e0e0e" }}>negocio</span>?
             </h3>
-            <p className="text-on-surface-variant text-base sm:text-lg font-medium">Hagamos que tu visión digital se convierta en una realidad de alto impacto.</p>
+            <p className="text-[#0e0e0e]/60 text-base sm:text-lg font-medium">Hagamos que tu visión digital se convierta en una realidad de alto impacto.</p>
           </div>
           <div className="relative z-10 flex flex-col sm:flex-row gap-4 sm:gap-6 w-fit mx-auto lg:w-auto lg:mx-0">
             <a href="https://wa.me/5491172023171" target="_blank" rel="noopener noreferrer" className="w-fit">
               <Button icon={Phone} variant="primary">Reservar Llamada</Button>
             </a>
             <a href="#proyectos" className="w-fit">
-              <Button icon={ArrowUpRight} variant="secondary">Ver Proyectos</Button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group flex items-center p-1 rounded-2xl bg-[#0e0e0e] text-white transition-all duration-300 hover:bg-[#1a1a1a]"
+              >
+                <span className="px-5 sm:px-7 py-3 sm:py-3.5 font-headline font-black uppercase tracking-widest text-sm sm:text-base">
+                  Ver Proyectos
+                </span>
+                <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl border border-white/10">
+                  <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+              </motion.button>
             </a>
           </div>
-          
-          {/* Decorative elements */}
-          <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full group-hover:bg-primary/20 transition-colors duration-1000"></div>
-          <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary/5 blur-[100px] rounded-full"></div>
+          {/* Subtle primary glow on white */}
+          <div className="absolute top-0 right-0 w-[50%] h-[200%] bg-primary/10 blur-[120px] rounded-full"></div>
         </div>
       </ScrollReveal>
     </section>

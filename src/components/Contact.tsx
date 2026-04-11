@@ -20,9 +20,9 @@ export default function Contact() {
 
       {/* Header */}
       <div className="text-center mb-20 md:mb-32">
-        <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/[0.02] mb-10">
-          <MessageCircle className="w-4 h-4 text-primary" />
-          <span className="text-[11px] font-black tracking-[0.3em] uppercase text-white/90">Contacto</span>
+        <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white mb-10 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+          <MessageCircle className="w-4 h-4 text-[#0e0e0e]" />
+          <span className="text-[11px] font-black tracking-[0.3em] uppercase text-[#0e0e0e]">Contacto</span>
         </div>
         <h2 className="font-headline text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-6">
           <span className="text-white">Hablemos de </span>

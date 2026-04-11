@@ -181,17 +181,17 @@ export default function Portfolio() {
       <ScrollReveal direction="none" distance={0}>
         <div 
           onClick={() => setShowAll(!showAll)}
-          className="flex flex-col sm:flex-row justify-between items-center gap-8 glass-card p-8 sm:p-12 rounded-[2.5rem] sm:px-16 group hover:border-primary/50 cursor-pointer transition-all text-center sm:text-left"
+          className="flex flex-col sm:flex-row justify-between items-center gap-8 bg-white p-8 sm:p-12 rounded-[2.5rem] sm:px-16 group cursor-pointer transition-all text-center sm:text-left shadow-lg hover:shadow-2xl"
         >
           <div className="flex flex-col items-center sm:items-start gap-2">
-            <span className="font-headline text-2xl sm:text-3xl font-black tracking-tighter uppercase italic">
+            <span className="font-headline text-2xl sm:text-3xl font-black tracking-tighter uppercase italic text-[#0e0e0e]">
               {showAll ? "Ver menos proyectos" : "Ver todos los proyectos"}
             </span>
-            <p className="text-on-surface-variant text-xs font-medium uppercase tracking-widest opacity-60">
+            <p className="text-[#0e0e0e]/40 text-xs font-medium uppercase tracking-widest">
               {showAll ? "Cerrar catálogo" : `Descubrí ${otherProjects.length} proyectos adicionales`}
             </p>
           </div>
-          <div className={`bg-primary text-black w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center font-black text-xl sm:text-2xl shadow-lg shadow-primary/20 group-hover:scale-110 transition-all duration-500 ${showAll ? "rotate-180 bg-white/10 text-white" : ""}`}>
+          <div className={`bg-[#0e0e0e] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center font-black text-xl sm:text-2xl shadow-lg transition-all duration-500 ${showAll ? "rotate-180" : ""}`}>
             <ChevronDown className="w-8 h-8" />
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function Portfolio() {
                     href="https://wa.me/5491172023171" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hidden sm:flex items-center gap-2 bg-white/5 border border-white/10 text-white px-6 py-2 rounded-full font-headline font-black text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all"
+                    className="hidden sm:flex items-center gap-2 bg-white text-black px-6 py-2 rounded-full font-headline font-black text-[10px] uppercase tracking-widest hover:bg-white/90 transition-all"
                    >
                      Consultar <MessageCircle className="w-3 h-3" />
                    </a>
