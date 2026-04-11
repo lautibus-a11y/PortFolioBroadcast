@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Phone, ArrowUpRight } from "lucide-react";
+import { Phone, ArrowUpRight, Quote } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import Button from "./Button";
 
@@ -71,7 +71,7 @@ export default function Hero() {
 
           <ScrollReveal direction="up" delay={0.2} distance={30} blur={true}>
             <h1 className="font-headline text-4xl sm:text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter mb-8 uppercase italic flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-1">
-              <span className="inline-flex items-center whitespace-nowrap overflow-hidden h-[1.3em] relative text-primary justify-center lg:justify-start -mb-2 sm:mb-0">
+              <span className="inline-flex items-center whitespace-nowrap overflow-hidden h-[1.3em] relative text-primary justify-center lg:justify-start -mb-2 sm:mb-0 transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                 <AnimatePresence mode="popLayout">
                   <motion.span
                     key={wordIndex}
@@ -79,13 +79,13 @@ export default function Hero() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -60, opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute left-0 lg:static"
+                    className="absolute left-0"
                   >
                     {words[wordIndex]}
                   </motion.span>
                 </AnimatePresence>
-                {/* Invisible spacer to reserve width based on longest word */}
-                <span className="opacity-0 pointer-events-none">{words[1]}</span>
+                {/* Invisible spacer bound to the CURRENT word creates responsive hugging width! */}
+                <span className="opacity-0 pointer-events-none">{words[wordIndex]}</span>
               </span>
               <span>y</span>
               <span className="font-light text-white/20 w-full text-center lg:text-left">Arquitectura Digital</span>
@@ -93,9 +93,27 @@ export default function Hero() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.3} distance={30} blur={true}>
-            <p className="block text-center lg:text-left text-on-surface-variant text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 font-body font-medium leading-[1.6] tracking-tight opacity-80">
-              Transformo marcas emergentes en referentes de la industria a través de interfaces minimalistas y experiencias digitales diseñadas para generar impacto y resultados reales.
-            </p>
+            <div className="relative max-w-lg mx-auto lg:mx-0 mt-4 mb-10 group">
+              <motion.div 
+                animate={{ y: [-3, 3, -3], rotate: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 -left-4 sm:-left-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500 text-primary"
+              >
+                <Quote size={28} className="transform rotate-180" />
+              </motion.div>
+              
+              <p className="block text-center lg:text-left text-on-surface-variant text-base sm:text-lg font-body font-medium leading-[1.6] tracking-tight opacity-90 relative z-10 px-4 sm:px-0">
+                Transformo marcas emergentes en referentes de la industria a través de interfaces minimalistas y experiencias digitales diseñadas para generar impacto y resultados reales.
+              </p>
+              
+              <motion.div 
+                animate={{ y: [3, -3, 3], rotate: [5, -5, 5] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-6 -right-4 sm:-right-8 opacity-20 group-hover:opacity-60 transition-opacity duration-500 text-primary"
+              >
+                <Quote size={28} />
+              </motion.div>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.4} distance={30} blur={true}>
