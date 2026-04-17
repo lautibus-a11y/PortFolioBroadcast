@@ -802,16 +802,16 @@
         ps.forEach((p, i) => {
             const h = `<div class="reveal project-card-container w-full max-w-[1600px] mx-auto" style="--mobile-top: ${70 + i * 20}px; z-index: ${i};">
                 <div class="project-glass flex flex-col xl:flex-row gap-6 xl:gap-12 items-center">
-                    <div class="w-full xl:w-[75%] aspect-[16/9] overflow-hidden rounded-[1.5rem] xl:rounded-[3rem] cursor-pointer relative group" onclick="openM(${i})">
+                    <div class="w-full xl:w-[70%] aspect-[16/9] overflow-hidden rounded-[1.5rem] xl:rounded-[3rem] cursor-pointer relative group" onclick="openM(${i})">
                         <img loading="lazy" src="${p.img}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="P">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <span class="bg-primary text-black px-8 py-3 xl:px-12 xl:py-5 rounded-full font-black text-[10px] xl:text-xs uppercase tracking-widest">Ver Proyecto</span>
                         </div>
                     </div>
-                    <div class="w-full xl:w-[25%] flex flex-col gap-4 xl:gap-8 p-2 xl:p-4">
+                    <div class="w-full xl:w-[30%] flex flex-col gap-4 xl:gap-8 p-4 xl:p-6">
                         <div class="space-y-2 xl:space-y-4">
                             <span class="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.5em] text-primary/80">${p.cat}</span>
-                            <h3 class="text-2xl xl:text-5xl font-headline font-black uppercase italic leading-[1.1] tracking-tighter py-2 break-words text-balance pr-4">${p.t}</h3>
+                            <h3 class="text-3xl xl:text-4xl font-headline font-black uppercase italic leading-[1] tracking-tighter py-2 text-balance">${p.t}</h3>
                         </div>
                         <p class="hidden xl:block text-white/30 text-base leading-relaxed line-clamp-4">Estrategia y arquitectura digital de alto rendimiento. Solución premium diseñada para el impacto visual.</p>
                         <div class="flex pt-2 xl:pt-4">
