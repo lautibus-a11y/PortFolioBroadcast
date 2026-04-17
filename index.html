@@ -393,7 +393,7 @@
                 <a href="#sobre-mi" class="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors">Sobre mi</a>
                 <a href="#servicios" class="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors">Servicios</a>
                 <a href="#proyectos" class="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
-                    Proyectos <span class="bg-primary/20 text-primary px-1.5 py-0.5 rounded text-[8px] font-bold">24</span>
+                    Proyectos <span class="bg-primary/20 text-primary px-1.5 py-0.5 rounded text-[8px] font-bold">11</span>
                 </a>
                 <a href="#contacto" class="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-colors">Contacto</a>
             </div>
@@ -760,6 +760,12 @@
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5491172023171" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-[100] liquid-glass w-16 h-16 rounded-full flex items-center justify-center border border-[#a0ffc3]/30 hover:bg-[#a0ffc3]/10 hover:scale-110 transition-all shadow-[0_0_25px_rgba(160,255,195,0.15)] group duration-300">
+        <i data-lucide="message-circle" class="w-8 h-8 text-primary group-hover:fill-primary/20 transition-all"></i>
+    </a>
+
     <!-- Modal System -->
     <div id="modal" class="fixed inset-0 z-[200] items-center justify-center p-4 bg-black/95 backdrop-blur-3xl">
         <div class="glass-card max-w-7xl w-full max-h-[92vh] rounded-[4rem] overflow-hidden flex flex-col">
@@ -779,15 +785,17 @@
         lucide.createIcons();
 
         const ps = [
-            { t: "Edu Portal", cat: "Gestión & CRM", img: "/assets/projects/web-app-educativa.png", l: "https://web-sistema-de-gestion-educativo-ns.vercel.app/" },
-            { t: "AutoElite", cat: "E-commerce Elite", img: "/assets/projects/WEB Autopartes.png", l: "https://autoelite-parts.vercel.app/" },
-            { t: "PropTech", cat: "App Inmobiliaria", img: "/assets/projects/APP para Inmobiliarias.png", l: "https://inmobiliaria-eta-ten.vercel.app/" },
-            { t: "E-Store", cat: "Retail Moderna", img: "/assets/projects/Tienda Online.png", l: "#" },
-            { t: "Biz Tool", cat: "Business Tool", img: "/assets/projects/Sistema de Gestion de Comercios.png", l: "#" },
-            { t: "Grill Menu", cat: "Gastronomía", img: "/assets/projects/Menu para Parrilla.png", l: "#" },
-            { t: "Pizza App", cat: "Gastronomía", img: "/assets/projects/Menu para Pizzeria.png", l: "#" },
-            { t: "Invitación", cat: "Social Events", img: "/assets/projects/Invitacion de XV interactiva.png", l: "#" },
-            { t: "Sist. Turnos", cat: "Booking System", img: "/assets/projects/WEB Salon de fiestas Con sistems de turnos.png", l: "#" }
+            { t: "Web + App Educativa", cat: "Gestión Educativa", img: "/assets/projects/Web + APP para institucion Educativa.png", l: "https://web-sistema-de-gestion-educativo-ns.vercel.app/" },
+            { t: "Web Autopartes", cat: "E-commerce Automotriz", img: "/assets/projects/WEB Autopartes.png", l: "https://autoelite-parts.vercel.app/" },
+            { t: "App Inmobiliarias", cat: "App Inmobiliaria", img: "/assets/projects/APP para Inmobiliarias.png", l: "https://inmobiliaria-eta-ten.vercel.app/" },
+            { t: "Tienda Online", cat: "E-commerce", img: "/assets/projects/Tienda Online.png", l: "#" },
+            { t: "Gestión Comercios", cat: "Dashboard", img: "/assets/projects/Sistema de Gestion de Comercios.png", l: "#" },
+            { t: "Menú Parrilla", cat: "Gastronomía", img: "/assets/projects/Menu para Parrilla.png", l: "#" },
+            { t: "Menú Pizzería", cat: "Gastronomía", img: "/assets/projects/Menu para Pizzeria.png", l: "#" },
+            { t: "Invitación de XV", cat: "Eventos", img: "/assets/projects/Invitacion de XV interactiva.png", l: "#" },
+            { t: "Salón con Turnos", cat: "Gestión y Reservas", img: "/assets/projects/WEB Salon de fiestas Con sistems de turnos.png", l: "#" },
+            { t: "Estudio Jurídico", cat: "Sitio Profesional", img: "/assets/projects/Pagina Web Abogados.png", l: "#" },
+            { t: "Centro Estética", cat: "Salud y Belleza", img: "/assets/projects/Pagina web Estetica.png", l: "#" }
         ];
 
         const grid = document.getElementById('p-grid');
@@ -803,7 +811,7 @@
                     <div class="w-full xl:w-[25%] flex flex-col gap-4 xl:gap-8 p-2 xl:p-4">
                         <div class="space-y-2 xl:space-y-4">
                             <span class="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.5em] text-primary/80">${p.cat}</span>
-                            <h3 class="text-2xl xl:text-7xl font-headline font-black uppercase italic leading-[1.1] tracking-tighter py-2">${p.t}</h3>
+                            <h3 class="text-2xl xl:text-5xl font-headline font-black uppercase italic leading-[1.1] tracking-tighter py-2 break-words text-balance pr-4">${p.t}</h3>
                         </div>
                         <p class="hidden xl:block text-white/30 text-base leading-relaxed line-clamp-4">Estrategia y arquitectura digital de alto rendimiento. Solución premium diseñada para el impacto visual.</p>
                         <div class="flex pt-2 xl:pt-4">
